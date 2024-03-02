@@ -1,6 +1,5 @@
 <?php
 require_once('database.php');
-$data = tambahbarang('barang');
 ?>
 <!doctype html>
 <html lang="en">
@@ -49,72 +48,36 @@ $data = tambahbarang('barang');
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
-                <form action="tambah.php" method="post"> 
+                <form action="tambah.php" method="post">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kode Barang</label>
-                        <input class="form-control" id="exampleFormControlSelect1" nama="kode_barang" value="<?php echo "$kode[id]"; ?>">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"
-            name="notes"><?php echo "$kode[barang]"; ?> </textarea>
+                        <input class="form-control" id="kode" name="kode_brg" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Barang</label>
-                        <input type="hidden" class="form-control" id="exampleFormControlSelect1" nama="nama_barang" value="<?php echo "$nama[id]"; ?>">
+                        <input class="form-control" id="mnama" name="nama_brg" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
-                        <input class="form-control" id="exampleFormControlSelect1" nama="kategori" value="<?php echo "$kategori[id]"; ?>">
+                        <input class="form-control" id="kategori" name="kategori" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Merk</label>
-                        <input class="form-control" id="exampleFormControlSelect1" nama="merk" value="<?php echo "$merk[id]"; ?>">
+                        <input class="form-control" id="merk" name="merk" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Jumlah</label>
-                        <input type="number" class="form-control" id="exampleFormControlInput1" max="2" name="jumlah" value="<?php echo "$jumlah[id]"; ?>">
+                        <input type="number" class="form-control" id="jumlah" name="jumlah" value="jumlah">
                     </div>
-                    <a type="button" class="btn btn-primary" href="tambah.php" name="proses">Tambahkan</a>
-                </form>
+                    <button type="submit" class="btn btn-primary" name="proses" value="proses">Tambahkan</button>
+                    <a type="button" class="btn btn-primary" href="barang.php" name="kembali"
+                        value="kembali">Kembali</a>
+                    <?php
+
+                    ?>
             </div>
         </div>
     </div>
-    <div class="container">
-    <h1> Edit Notes </h1>
-    <?php while ($note = mysqli_fetch_array($data)): ?>
-      <form action="update.php" method="post">
-        <div class="form-group">
-          <input type="hidden" name="id" value="<?php echo "$kode[barang]"; ?>">
-          <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            name="notes"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="hidden" name="id" value="<?php echo "$nama[barang]"; ?>">
-          <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            name="notes"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="hidden" name="id" value="<?php echo "$kategori[barang]"; ?>">
-          <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            name="notes"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="hidden" name="id" value="<?php echo "$merk[barang]"; ?>">
-          <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            name="notes"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="hidden" name="id" value="<?php echo "$jumlah[barang]"; ?>">
-          <label for="exampleFormControlTextarea1">Notes</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
-            name="notes"></textarea>
-        </div>
-        <input type="submit" value="Update">
-      </form>
-    <?php endwhile; ?>
-  </div>
 </body>
 
 </html>

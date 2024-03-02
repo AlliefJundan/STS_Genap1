@@ -68,11 +68,16 @@ function tampildata1($tablename)
     return $rows;
 }
 
-function tambahbarang($koneksi, $kode, $nama, $kategori, $jumlah)
-{
-   $sql = mysqli_query($koneksi, "INSERT into barang set kode_brg = '$kode', nama_brg = '$nama', kategori = '$kategori', jumlah = '$jumlah'");
-   $hasil = mysqli_query($koneksi, $sql);
-   return $hasil;
+
+function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah) {
+    global $koneksi;
+    $query = "INSERT INTO barang (kode_brg, nama_brg, kategori, merk, jumlah) VALUES ('$kode_brg', '$nama_brg', '$kategori', '$merk', $jumlah)";
+
+    if ($koneksi->query($query) === TRUE) {
+        return "Barang berhasil ditambahkan.";
+    } else {
+        return "Error: " . $query . "<br>" . $koneksi->error;
+    }
 }
 
 ?>

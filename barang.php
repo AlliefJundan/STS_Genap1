@@ -29,8 +29,6 @@ $nomor = 0;
   }
   ?>
 
-
-
   <script language="JavaScript" type="text/javascript">
     function hapusData(id) {
       if (confirm("Apakah yakin akan menghapus data ini")) {
@@ -43,6 +41,7 @@ $nomor = 0;
     <center>
       <h1>DAFTAR BARANG</h1>
     </center>
+    <a type="button" name="tambahBarang" class="btn btn-primary" href="tambahbarang.php">Tambah Barang</a>
     <table class="table">
       <thead>
         <tr>
@@ -88,6 +87,7 @@ $nomor = 0;
       </tbody>
     </table>
   </div>
+
   <!-- Optional JavaScript; choose one of the two! -->
 
   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
