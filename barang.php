@@ -1,6 +1,5 @@
 <?php
 require_once('database.php');
-// $data = tampildata('notes');
 $data = tampildata1('barang');
 $nomor = 0;
 ?>

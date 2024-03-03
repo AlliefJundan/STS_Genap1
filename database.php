@@ -16,12 +16,19 @@ function tampildata($tablename)
     return $rows;
 }
 
-function editdata($tablename, $id)
+function editdatabarang($tablename, $id)
 {
     global $koneksi;
-    $hasil = mysqli_query($koneksi, "SELECT * from $tablename where id = $id");
-    return $hasil;
+    $query =  "SELECT * from $tablename where id = $id";
+    $hasil = $koneksi->query($query);
+
+    if ($hasil->num_rows > 0) {
+        return $hasil->fetch_assoc();
+    } else {
+        return null;
+    }
 }
+
 
 function updatedata($table, $data, $id)
 {

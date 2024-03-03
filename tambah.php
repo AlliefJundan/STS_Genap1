@@ -1,5 +1,5 @@
 <?php
-include "database.php";
+require_once ("database.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kode_brg = $_POST["kode_brg"];
@@ -14,17 +14,9 @@ if($result){
     header("location:barang.php"); 
 } else {
     echo "<script> 'barang gagal ditambahkan' </script>";
-    header("location:0;barang.php"); 
+    header("location:barang.php"); 
 }
 
     echo $result;
-//     if ($koneksi->query($query) === TRUE) {
-//         echo "Barang berhasil ditambahkan.";
-//     } else {
-//         echo "Error: " . $query . "<br>" . $koneksi->error;
-//     }
-
-//     $koneksi->close();
-// }
 }
 ?>
