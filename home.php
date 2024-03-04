@@ -41,7 +41,7 @@
     -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4" align="center">My Notes 2024</h1>
+      <h1 class="display-4" align="center">Peminjaman Barang</h1>
       <p class="lead" align="center">Something short and leading about the collection below--its contents, the creator,
         etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
       <center><a role="button" class="btn btn-secondary btn-lg" href="barang.php">Barang</a></center>
