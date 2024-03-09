@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 // $data = tampildata('notes');
-$data = tampildata1('peminjaman');
+$data = tampildata('peminjaman');
 $nomor = 0;
 ?>
 <!doctype html>

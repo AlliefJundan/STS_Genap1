@@ -30,14 +30,6 @@ function editdatabarang($tablename, $id)
 }
 
 
-function updatedata($table, $data, $id)
-{
-    global $koneksi;
-    $sql = "UPDATE $table SET note = '$data' WHERE id = '$id'";
-    $hasil = mysqli_query($koneksi, $sql);
-    return $hasil;
-}
-
 function delete($tablename, $id)
 {
     global $koneksi;
@@ -86,5 +78,7 @@ function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah) {
         return "Error: " . $query . "<br>" . $koneksi->error;
     }
 }
+
+
 
 ?>
