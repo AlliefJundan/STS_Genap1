@@ -15,7 +15,7 @@ $nomor = 0;
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-  <title>Notes</title>
+  <title>Barang</title>
 </head>
 
 <body>
@@ -40,8 +40,9 @@ $nomor = 0;
     <center>
       <h1>DAFTAR BARANG</h1>
     </center>
-    <a type="button" name="tambahBarang" class="btn btn-primary" href="tambahbarang.php">Tambah Barang</a>
-    <table class="table">
+    <a type="button pt-5" name="tambahBarang" class="btn btn-primary" href="tambahbarang.php">Tambah Barang</a>
+    <br>
+    <table class="table table-bordered" break>
       <thead>
         <tr>
           <th scope="col">No</th>
@@ -50,7 +51,8 @@ $nomor = 0;
           <th scope="col">Nama Barang</th>
           <th scope="col">Kategori</th>
           <th scope="col">Merk</th>
-          <th scope="col">Jumlah</th>
+        <center><th scope="col">Jumlah</th></center>
+          <th scope="col">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -79,7 +81,7 @@ $nomor = 0;
               <?php echo $item['jumlah']; ?>
             </td>
             <td>
-              <?php echo "<a href='edit.php?id=$item[id]'>Edit</a> | <a href='javascript:hapusData(" . $item['id'] . ")'>Delete</a>"; ?>
+              <?php echo "<a type='button' class='btn btn-success' href='edit.php?id=$item[id]'>Edit</a> | <a type='button' class='btn btn-danger' href='javascript:hapusData(" . $item['id'] . ")'>Delete</a>"; ?>
             </td>
           </tr>
         <?php endforeach ?>

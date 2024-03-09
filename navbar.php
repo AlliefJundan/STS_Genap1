@@ -22,9 +22,6 @@ require_once('database.php')
         <li class="nav-item">
           <a class="nav-link" href="user.php">User <span class="sr-only"></span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="pinjambarang.php">Pinjam Barang <span class="sr-only"></span></a>
-        </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <a class="btn btn-outline-success my-2 my-sm-0" href="logout.php" role="button">Logout</a>

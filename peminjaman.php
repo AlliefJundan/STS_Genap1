@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 // $data = tampildata('notes');
-$data = tampildata('peminjaman');
+$data = tampildata1('peminjaman');
 $nomor = 0;
 ?>
 <!doctype html>
@@ -16,7 +16,7 @@ $nomor = 0;
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-  <title>Notes</title>
+  <title>Peminjaman</title>
 </head>
 
 <body>
@@ -39,6 +39,7 @@ $nomor = 0;
     <center>
       <h1>DAFTAR PEMINJAMAN</h1>
     </center>
+    <a type="button" href="formulirpinjam.php" class="btn btn-primary">Pinjam Barang</a>
     <table class="table">
       <thead>
         <tr>
