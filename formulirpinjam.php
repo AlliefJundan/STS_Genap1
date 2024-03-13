@@ -14,7 +14,14 @@
 </head>
 
 <body>
-  <h1>Hello, world!</h1>
+  <?php
+  session_start();
+  if ($_SESSION['status'] <> "login") {
+    header("location:login.php?msg=belum_login");
+  } else {
+    require('navbar.php');
+  }
+  ?>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
@@ -90,7 +97,7 @@
             <label for="keperluan">Keperluan:</label>
             <input type="text" class="form-control" id="keperluan" name="keperluan" required>
           </div>
-          <button type="submit" class="btn btn-primary" value='pinjam'>Submit</button>
+          <button type="submit" class="btn btn-primary" value='pinjam'>Pinjam</button>
         </form>
       </div>
     </div>

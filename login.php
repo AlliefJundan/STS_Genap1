@@ -7,7 +7,7 @@ if (isset($_POST['masuk'])) {
     $_SESSION['username'] = $username;
     $_SESSION['status'] = 'login';
     if ($_SESSION['role'] == 'admin') {
-      header("location:barang.php");
+      header("location:home.php");
     } else {
       header('location:homeuser.php');
     } 
@@ -56,10 +56,10 @@ if (isset($_POST['masuk'])) {
     <div class="row">
       <div class="col-md-4">
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
         <div class="card">
           <div class="card-header">
-            <h1 class="mb-0" align="center">NOTES <span class="text-primary">LOGIN</span></h1>
+            <h1 class="mb-0" align="center">PEMINJAMAN <span class="text-primary">LOGIN</span></h1>
           </div>
           <div class="card-body">
             <form action="" method="POST">

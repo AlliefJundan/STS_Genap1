@@ -19,7 +19,7 @@
   if ($_SESSION['status'] != "login") {
     header("location:login.php?msg=belum_login");
   } else {
-    require('navbar.php');
+    require('navbaruser.php');
   }
   ?>
 
@@ -42,14 +42,8 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h1 class="display-4" align="center">Peminjaman Barang</h1>
-      <p class="lead" align="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, praesentium
-        aperiam! Explicabo dicta magni odio totam iusto. Mollitia numquam beatae ratione blanditiis quaerat rerum
-        laboriosam asperiores, ut earum sed accusamus, veniam ex totam excepturi. Adipisci rem optio eveniet esse
-        tenetur ex quia obcaecati deleniti magnam, placeat voluptate. Impedit, aperiam eveniet? Accusamus, quas! Quas
-        ullam tenetur architecto saepe earum sit molestiae vero aperiam id explicabo. Expedita recusandae itaque animi
-        consequatur ex temporibus iure eveniet aut consequuntur harum! Numquam neque ipsam quos officiis officia, porro
-        omnis perferendis facilis facere labore quaerat sunt corrupti natus alias debitis iure fugiat iusto maxime
-        pariatur vero.</p>
+      <p class="lead" align="center">Something short and leading about the collection below--its contents, the creator,
+        etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
       <center><a role="button" class="btn btn-secondary btn-lg" href="barang.php">Barang</a></center>
     </div>
   </div>

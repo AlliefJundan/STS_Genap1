@@ -25,13 +25,13 @@ $nomor = 0;
   if ($_SESSION['status'] <> "login") {
     header("location:login.php?msg=belum_login");
   } else {
-    require('navbar.php');
+    require('navbaruser.php');
   }
   ?>
   <script language="JavaScript" type="text/javascript">
-    function kembali(id) {
-      if (confirm("Apakah yakin akan mengembalikan barang ini")) {
-        window.location.href = 'proses_pengembalian.php?id=' + id;
+    function hapusData(id) {
+      if (confirm("Apakah yakin akan menghapus data ini")) {
+        window.location.href = 'delete.php?id=' + id;
       }
     }
   </script>
@@ -39,7 +39,6 @@ $nomor = 0;
     <center>
       <h1>DAFTAR PEMINJAMAN</h1>
     </center>
-    <a type="button" href="formulirpinjam.php" class="btn btn-primary">Pinjam Barang</a>
     <table class="table">
       <thead>
         <tr>
@@ -54,7 +53,6 @@ $nomor = 0;
           <th scope="col">Keperluan</th>
           <th scope="col">Status</th>
           <th scope="col">ID Login</th>
-          <th scope="col">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -93,10 +91,7 @@ $nomor = 0;
             </td>
             <td>
               <?php echo $item['id_login']; ?>
-            </td>
-            <td>
-              <?php echo "<a href='javascript:kembali(" . $item['id'] . ")'>Kembalikan</a>"; ?>
-            </td>
+        </td>
           </tr>
         <?php endforeach ?>
       </tbody>

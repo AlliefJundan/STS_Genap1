@@ -111,4 +111,12 @@ function barang($id_barang) {
     }
 }
 
+
+function kembali($tablename, $id)
+{
+    global $koneksi;
+    $hasil = mysqli_query($koneksi, "UPDATE from $tablename where id='$id'");
+    return $hasil;
+}
+
 ?>
