@@ -1,8 +1,4 @@
-<?php
-require_once('database.php')
-  ?>
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -14,68 +10,11 @@ require_once('database.php')
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-  <title>Peminjaman</title>
+  <title>Hello, world!</title>
 </head>
 
 <body>
-  <?php
-  session_start();
-  if ($_SESSION['status'] <> "login") {
-    header("location:login.php?msg=belum_login");
-  } else {
-    require('navbar.php');
-  }
-  ?>
-  <div class="container">
-    <h2>Formulir Peminjaman</h2>
-
-    <form id="formPeminjaman" action="proses_peminjaman.php" method="post">
-      <div class="form-group">
-        <label for="idBarang">Pilih ID Barang:</label>
-        <select class="form-control" id="idBarang" name="id_barang" onchange="tampilkanInfoBarang(this)">
-          <!-- Pilihan ID barang akan diisi dari database atau sumber data lainnya -->
-          <?php
-          // Koneksi ke database
-          $conn = mysqli_connect("localhost", "username", "password", "nama_database");
-
-          // Query untuk mendapatkan data ID barang dari tabel barang
-          $query = "SELECT id, kode_brg FROM barang";
-          $result = mysqli_query($conn, $query);
-
-          // Loop untuk menampilkan opsi dari data ID barang
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo "<option value='{$row['id']}'>{$row['kode_brg']}</option>";
-          }
-
-          // Tutup koneksi
-          mysqli_close($conn);
-          ?>
-          <!-- Tambahkan pilihan ID barang lain sesuai kebutuhan -->
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="kodeBrg">Kode Barang:</label>
-        <input type="text" class="form-control" id="kodeBrg" name="kode_brg" readonly>
-      </div>
-      <div class="form-group">
-        <label for="namaBrg">Nama Barang:</label>
-        <input type="text" class="form-control" id="namaBrg" name="nama_brg" readonly>
-      </div>
-      <div class="form-group">
-        <label for="merk">Merk:</label>
-        <input type="text" class="form-control" id="merk" name="merk" readonly>
-      </div>
-      <div class="form-group">
-        <label for="jumlah">Jumlah:</label>
-        <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" max="100" required>
-      </div>
-      <div class="form-group">
-        <label for="keperluan">Keperluan:</label>
-        <textarea class="form-control" id="keperluan" name="keperluan" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Pinjam</button>
-    </form>
-  </div>
+  <h1>Hello, world!</h1>
 
   <!-- Optional JavaScript; choose one of the two! -->
 
@@ -93,24 +32,106 @@ require_once('database.php')
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     -->
-  <script>
-    function tampilkanInfoBarang(selectElement) {
-      // Dapatkan nilai ID barang yang dipilih
-      var selectedIdBarang = selectElement.value;
 
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-6">
+        <h2>Formulir Peminjaman Barang</h2>
+        <form method="post" action="proses_peminjaman.php" id="form_peminjaman" onsubmit="return cekJumlah()">
+          <label for="kode_barang">Pilih ID Barang:</label>
+          <select class="form-control" name="kode_barang" id="kode_barang" onchange="getBarangDetails()">
+            <?php
+            require_once('database.php');
+            $result = getAllBarang();
+            if ($result->num_rows > 0) {
+              while ($row = $result->fetch_assoc()) {
+                echo "<option value='" . $row["kode_brg"] . "'>" . $row["id"] . "</option>";
+              }
+            } else {
+              echo "<option value=''>Tidak ada barang tersedia</option>";
+            }
+            ?>
+          </select>
+          <div class="form-group">
+            <label for="kode_brg">Kode Barang:</label>
+            <input type="text" class="form-control" id="kode_brg" name="kode_brg" readonly>
+          </div>
+          <div class="form-group">
+            <label for="nama_brg">Nama Barang:</label>
+            <input type="text" class="form-control" id="nama_brg" name="nama_brg" readonly>
+          </div>
+          <div class="form-group">
+            <label for="kategori">Kategori:</label>
+            <input type="text" class="form-control" id="kategori" name="kategori" readonly>
+          </div>
+          <div class="form-group">
+            <label for="merk">Merk:</label>
+            <input type="text" class="form-control" id="merk" name="merk" readonly>
+          </div>
+          <div class="form-group">
+            <label for="jumlah_tersedia">Jumlah Tersedia:</label>
+            <input type="text" class="form-control" id="jumlah_tersedia" name="jumlah_tersedia" readonly>
+          </div>
+          <div class="form-group">
+            <label for="login">ID Peminjam:</label>
+            <input type="number" class="form-control" id="login" name="login" required>
+          </div>
+          <div class="form-group">
+            <label for="no_identitas">Nomor Identitas:</label>
+            <input type="number" class="form-control" id="no_identitas" name="no_identitas" required>
+          </div>
+          <div class="form-group">
+            <label for="jumlah">Jumlah:</label>
+            <input type="number" class="form-control" id="jumlah" min="1" name="jumlah" required>
+          </div>
+          <div class="form-group">
+            <label for="keperluan">Keperluan:</label>
+            <input type="text" class="form-control" id="keperluan" name="keperluan" required>
+          </div>
+          <button type="submit" class="btn btn-primary" value='pinjam'>Submit</button>
+        </form>
+      </div>
+    </div>
 
-      if (selectedIdBarang === 'B001') {
-        document.getElementById('kodeBrg').value = 'KB001';
-        document.getElementById('namaBrg').value = 'Barang A';
-        document.getElementById('merk').value = 'Merk A';
-      } else if (selectedIdBarang === 'B002') {
-        document.getElementById('kodeBrg').value = 'KB002';
-        document.getElementById('namaBrg').value = 'Barang B';
-        document.getElementById('merk').value = 'Merk B';
+    <script src="database.js"></script>
+    <script>
+      function getBarangDetails() {
+        var kode_barang = document.getElementById("kode_barang").value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "detailbarang.php?kode_barang=" + kode_barang, true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var barang = JSON.parse(xhr.responseText);
+            document.getElementById("kode_brg").value = barang.kode_brg;
+            document.getElementById("nama_brg").value = barang.nama_brg;
+            document.getElementById("kategori").value = barang.kategori;
+            document.getElementById("merk").value = barang.merk;
+            document.getElementById("jumlah_tersedia").value = barang.jumlah;
+          }
+        };
+        xhr.send();
       }
-    }
-  </script>
+    </script>
+    <script>
+      function cekJumlah() {
+        var jumlah_tersedia = parseInt(document.getElementById("jumlah_tersedia").value);
+        var jumlah_dipinjam = parseInt(document.getElementById("jumlah").value);
 
+        if (jumlah_dipinjam <= 0) {
+          alert("Jumlah yang dipinjam harus lebih dari 0.");
+          return false;
+        }
+
+        if (jumlah_dipinjam > jumlah_tersedia) {
+          alert("Jumlah yang dipinjam melebihi jumlah yang tersedia.");
+          return false;
+        }
+
+        return true;
+      }
+    </script>
 </body>
 
 </html>

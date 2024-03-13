@@ -20,6 +20,7 @@ if (isset($_GET['id'])) {
                 integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
             <title>Edit Barang</title>
         </head>
+
         <body>
             <?php
             session_start();
@@ -69,31 +70,33 @@ if (isset($_GET['id'])) {
                                 <input type="number" class="form-control" id="jumlah" name="jumlah"
                                     value="<?php echo $barang['jumlah']; ?>">
                             </div>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Update Data
-</button>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Update Data
+                            </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Simpan Perubahan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Apakah Anda yakin untuk mengubah data dari barang ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-        <button type="submit" class="btn btn-primary" name="update" value="update">Update Data</button>
-      </div>
-    </div>
-  </div>
-</div>                            <a type="button" class="btn btn-primary" href="barang.php" name="kembali"
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Simpan Perubahan</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Apakah Anda yakin untuk mengubah data dari barang ini?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                            <button type="submit" class="btn btn-primary" name="update" value="update">Update
+                                                Data</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> <a type="button" class="btn btn-primary" href="barang.php" name="kembali"
                                 value="kembali">Kembali</a>
                         </form>
                     </div>

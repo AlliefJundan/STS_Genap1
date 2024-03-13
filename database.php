@@ -79,6 +79,36 @@ function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah) {
     }
 }
 
+// function getBarangDetails($kode_barang) {
+//     global $koneksi;
+//     $sql = "SELECT * FROM barang WHERE kode_brg = '$kode_barang'";
+//     $result = $koneksi->query($sql);
 
+//     // Jika data barang ditemukan, kirimkan sebagai respons JSON
+//     if ($result->num_rows > 0) {
+//         $barang = $result->fetch_assoc();
+//         echo json_encode($barang);
+//     } else {
+//         echo json_encode(array("error" => "Barang tidak ditemukan"));
+//     }
+// }
+
+function getAllBarang() {
+    global $koneksi;
+    $sql = "SELECT id, kode_brg, nama_brg, jumlah FROM barang";
+    return $koneksi->query($sql);
+}
+
+function barang($id_barang) {
+    global $koneksi;
+    $sql = "SELECT * FROM barang WHERE id = '$id_barang' OR jumlah";
+    $result = $koneksi->query($sql);
+    if ($result->num_rows > 0) {
+        $barang = $result->fetch_assoc();
+        return $barang;
+    } else {
+        return array("error" => "Barang tidak ditemukan atau stok habis");
+    }
+}
 
 ?>

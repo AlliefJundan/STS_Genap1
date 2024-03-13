@@ -55,7 +55,7 @@ require_once('database.php');
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Nama Barang</label>
-                        <input class="form-control" id="mnama" name="nama_brg" value="">
+                        <input class="form-control" id="nama" name="nama_brg" value="">
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Kategori</label>
