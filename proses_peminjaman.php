@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 
-$id_barang = $_POST['kode_barang'];
+$id_barang = $_POST['kode_brg'];
 $no_identitas = $_POST['no_identitas'];
 $id_login = $_POST['login'];
 $jumlah = $_POST['jumlah'];

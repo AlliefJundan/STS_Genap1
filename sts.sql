@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2024 at 07:04 PM
+-- Generation Time: Mar 14, 2024 at 06:09 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -41,8 +41,11 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `kode_brg`, `nama_brg`, `kategori`, `merk`, `jumlah`) VALUES
-(17, '123', 'Batagor', 'Makanan', 'Cap Jempol Kaki Dua Jari', 2),
-(18, '111', 'Air Mineral', 'Minuman', 'Aqua 2', 10);
+(17, '123', 'Batagor', 'Makanan', 'Cap Jempol Kaki Dua Jari', 173),
+(18, '111', 'Air Mineral', 'Minuman', 'Aqua 2', 152),
+(19, '66123', 'Cuanki', 'Berkuah', 'Kaki Kiri dua kelingking', 621),
+(20, '1182', 'Bala bala', 'gorengan', 'dua kaki tiga mata', 812615),
+(21, '1263', 'Cireng', 'gorengan', 'Telor Mata Bebek', 5123);
 
 -- --------------------------------------------------------
 
@@ -61,20 +64,6 @@ CREATE TABLE `peminjaman` (
   `status` varchar(30) NOT NULL,
   `id_login` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `peminjaman`
---
-
-INSERT INTO `peminjaman` (`id`, `tgl_pinjam`, `tgl_kembali`, `no_identitas`, `kode_barang`, `jumlah`, `keperluan`, `status`, `id_login`) VALUES
-(111, '2024-03-14 00:34:15', NULL, '121', '', 2, '1', 'Dipinjam', 12),
-(123, '2024-03-14 00:37:36', NULL, '121', '', 2, '1', 'Dipinjam', 12),
-(124, '2024-03-14 00:40:11', NULL, '121', '111', 2, '1', 'Dipinjam', 0),
-(125, '2024-03-14 00:44:04', NULL, '1231', '111', 0, '1', 'Dipinjam', 12),
-(126, '2024-03-14 00:55:09', NULL, '', '111', 0, '', 'Dipinjam', 0),
-(127, '2024-03-14 00:55:34', NULL, '', '111', 0, '', 'Dipinjam', 0),
-(128, '2024-03-14 00:56:47', NULL, '', '111', 0, '', 'Dipinjam', 0),
-(129, '2024-03-14 00:59:01', NULL, '2', '111', 2, 'enak', 'Dipinjam', 1221);
 
 -- --------------------------------------------------------
 
@@ -130,13 +119,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `user`

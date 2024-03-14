@@ -19,7 +19,7 @@ function tampildata($tablename)
 function editdatabarang($tablename, $id)
 {
     global $koneksi;
-    $query =  "SELECT * from $tablename where id = $id";
+    $query = "SELECT * from $tablename where id = $id";
     $hasil = $koneksi->query($query);
 
     if ($hasil->num_rows > 0) {
@@ -68,7 +68,8 @@ function tampildata1($tablename)
 }
 
 
-function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah) {
+function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah)
+{
     global $koneksi;
     $query = "INSERT INTO barang (kode_brg, nama_brg, kategori, merk, jumlah) VALUES ('$kode_brg', '$nama_brg', '$kategori', '$merk', $jumlah)";
 
@@ -78,28 +79,15 @@ function tambahbarang($kode_brg, $nama_brg, $kategori, $merk, $jumlah) {
         return "Error: " . $query . "<br>" . $koneksi->error;
     }
 }
-
-// function getBarangDetails($kode_barang) {
-//     global $koneksi;
-//     $sql = "SELECT * FROM barang WHERE kode_brg = '$kode_barang'";
-//     $result = $koneksi->query($sql);
-
-//     // Jika data barang ditemukan, kirimkan sebagai respons JSON
-//     if ($result->num_rows > 0) {
-//         $barang = $result->fetch_assoc();
-//         echo json_encode($barang);
-//     } else {
-//         echo json_encode(array("error" => "Barang tidak ditemukan"));
-//     }
-// }
-
-function getAllBarang() {
+function getAllBarang()
+{
     global $koneksi;
     $sql = "SELECT id, kode_brg, nama_brg, jumlah FROM barang";
     return $koneksi->query($sql);
 }
 
-function barang($id_barang) {
+function barang($id_barang)
+{
     global $koneksi;
     $sql = "SELECT * FROM barang WHERE id = '$id_barang' OR jumlah";
     $result = $koneksi->query($sql);
@@ -119,4 +107,20 @@ function kembali($tablename, $id)
     return $hasil;
 }
 
+function populer($tablename)
+{
+    global $koneksi;
+    $sql = mysqli_query($koneksi, "SELECT peminjaman.kode_barang, barang.nama_brg, SUM(peminjaman.jumlah) AS total_dipinjam
+    FROM peminjaman
+    JOIN barang ON peminjaman.kode_barang = barang.kode_brg
+    GROUP BY peminjaman.kode_barang, barang.nama_brg
+    ORDER BY total_dipinjam DESC
+    LIMIT 5;
+    ");
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($sql)) {
+        $rows[] = $row;
+    }
+    return $rows;
+}
 ?>

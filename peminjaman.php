@@ -95,7 +95,7 @@ $nomor = 0;
               <?php echo $item['id_login']; ?>
             </td>
             <td>
-              <?php echo "<a href='javascript:kembali(" . $item['id'] . ")'>Kembalikan</a>"; ?>
+              <?php echo "<a type='button' class='btn btn-secondary'href='javascript:kembali(" . $item['id'] . ")'>Kembalikan</a>"; ?>
             </td>
           </tr>
         <?php endforeach ?>

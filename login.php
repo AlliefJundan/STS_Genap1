@@ -52,11 +52,11 @@ if (isset($_POST['masuk'])) {
     -->
 
 
-  <div class="container pt-5">
+  <div class="container pt-5" align="center">
     <div class="row">
+        <div class="col-md-4">
+        </div>
       <div class="col-md-4">
-      </div>
-      <div class="col-md-5">
         <div class="card">
           <div class="card-header">
             <h1 class="mb-0" align="center">PEMINJAMAN <span class="text-primary">LOGIN</span></h1>

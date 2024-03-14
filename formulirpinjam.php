@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+  <title>Formulir Peminjaman Barang</title>
 </head>
 
 <body>
@@ -42,10 +42,10 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
+      <div class="col-md-4">
       </div>
-      <div class="col-md-6">
-        <h2>Formulir Peminjaman Barang</h2>
+      <div class="col-md-4">
+        <h2 align="center">Formulir Peminjaman Barang</h2>
         <form method="post" action="proses_peminjaman.php" id="form_peminjaman" onsubmit="return cekJumlah()">
           <label for="kode_barang">Pilih ID Barang:</label>
           <select class="form-control" name="kode_barang" id="kode_barang" onchange="getBarangDetails()">
