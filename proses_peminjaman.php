@@ -14,9 +14,9 @@ if ($barang !== null) {
 
     if ($jumlah_tersedia >= $jumlah) {
         $jumlah_tersedia_baru = $jumlah_tersedia - $jumlah;
-        $koneksi->query("UPDATE barang SET jumlah = $jumlah_tersedia_baru WHERE id = '$id_barang'");
+        $koneksi->query("UPDATE barang SET jumlah = $jumlah_tersedia_baru WHERE kode_brg = '$id_barang'");
 
-        $sql = "INSERT INTO peminjaman (tgl_pinjam, no_identitas, kode_barang, jumlah, keperluan, status, id_login)
+        $sql = "INSERT INTO peminjaman (`tgl_pinjam`, `no_identitas`, `kode_barang`, `jumlah`, `keperluan`, `status`, `id_login`)
                 VALUES (NOW(), '$no_identitas', '$id_barang', '$jumlah', '$keperluan', 'Dipinjam', '$id_login')";
 
         if ($koneksi->query($sql) === TRUE) {
